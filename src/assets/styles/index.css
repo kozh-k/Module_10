@@ -1,0 +1,13 @@
+body {
+   font-family: "Inter", sans-serif;
+   font-weight: 500;
+   font-size: 18px;
+   color: white;
+   background-color: #1B2037;
+}
+
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+

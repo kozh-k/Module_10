@@ -1,0 +1,63 @@
+.header {
+   margin: 0 auto;
+   box-sizing: border-box;
+   max-width:100%;
+   height: 68px;
+   padding: 12px 24px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: 24px;
+   background-color: #0E1223;
+}
+
+.header nav {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   gap: 24px;
+}
+
+.logoLink {
+   box-sizing: border-box;
+   width: 95.88px;
+   height: 44px;
+   padding: 0 10px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 6px;
+}
+
+.logoLink span {
+   vertical-align: middle;
+}
+
+.logoLink img {
+   object-fit: contain;
+   width: 17.78px;
+   height: 24px;
+}
+
+.userInfo {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: 12px;
+   width: 194px;
+   height: 44px;
+   padding: 0 8px;
+}
+
+.userInfo img {
+   object-fit: contain;
+   max-width: 24px;
+   max-height: 24px;
+   border-radius: 50%;
+}
+
+.userInfo p {
+   width: 100%;
+}

@@ -1,0 +1,28 @@
+.postCreator {
+   width: 700px;
+   max-height: 88px;
+   border: 2px solid #384162;
+   background-color: #0E1223;
+   margin: 26px auto;
+   padding: 12px;
+   display: flex;
+   flex-direction: row;
+   gap: 12px;
+}
+
+.postCreator img {
+   /* display: block; */
+   object-fit: contain;
+   border-radius: 50%;
+   width: 64px;
+   height: 64px;
+}
+
+.postCreator div {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: 12px;
+}
