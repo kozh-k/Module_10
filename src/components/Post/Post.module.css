@@ -10,6 +10,7 @@
 }
 
 .postHeader {
+   font-size: 16px;
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -21,4 +22,54 @@
    border-radius: 50%;
    width: 48px;
    height: 48px;
+}
+
+
+.postHeader div {
+   font-size: 16px;
+   line-height: 150%;
+   height: 48px;
+   display: flex;
+   flex-direction: column;
+}
+
+.postAuthor {
+   height: 24px;
+   vertical-align: middle;
+}
+
+.postTime {
+   height: 24px;
+   vertical-align: middle;
+   color: #8791B7;
+}
+
+
+.postImage {
+   border-radius: 4px;
+   margin-bottom: 16px;
+}
+
+figcaption {
+   font-size: 20px;
+   font-weight: 400;
+   line-height: 150%;
+}
+
+.likesAndComments {
+   display: flex;
+   flex-direction: row;
+   gap: 16px;
+}
+
+.likesAndComments div {
+   display: flex;
+   flex-direction: row;
+   gap: 8px;
+}
+
+.expandButton {
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }

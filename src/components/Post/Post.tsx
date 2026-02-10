@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 import dropDown from "../../assets/images/dropDown/dropDown.svg";
-import likeIcon from "../../assets/images/like/like.png";
-import commentIcon from "../../assets/images/comment/comment.png";
+import likeIcon from "../../assets/images/like/like.svg";
+import commentIcon from "../../assets/images/comment/comment.svg";
 import CommentsSection from "../CommentsSection/CommentsSection";
 import styles from "./Post.module.css";
 import CommentCreator from "../CommentCreator/CommentCreator";
+import UserPreview from "../UserPreview/UserPreview";
 
 interface PostProps {
    postTime: string;
@@ -34,18 +35,18 @@ export default function Post({
 
    return (
       <article className={styles.post}>
-         <section className={styles.postHeader}>
-            <img src={user.avatar} alt="user avatar" />
-            <div>
-               <h2>{user.name}</h2>
-               <p>{`${postTime} ago`}</p>
-            </div>
-         </section>
+         <UserPreview
+            username={user.name}
+            avatar={user.avatar}
+            attachment={postTime}
+         />
          <figure>
-            {image ? <img src={image} alt="post image" /> : <></>}
+            {image ? (
+               <img className={styles.postImage} src={image} alt="post image" />
+            ) : null}
             <figcaption>{description}</figcaption>
          </figure>
-         <section>
+         <section className={styles.likesAndComments}>
             <div>
                <img src={likeIcon} alt="like icon" />
                <span>{`${likesQuantity} likes`}</span>
@@ -55,21 +56,22 @@ export default function Post({
                {user.isLoggedIn ? (
                   <>
                      <span>{`${comments.length} comments`}</span>
-                     <button onClick={handleExpandButton}>
+                     <button
+                        className={styles.expandButton}
+                        onClick={handleExpandButton}
+                     >
                         <img src={dropDown} alt="dropdown icon" />
                      </button>
-                     {isCommentsSectionExpanded ? (
-                        <CommentsSection comments={comments} />
-                     ) : (
-                        <></>
-                     )}
-                     <CommentCreator />
                   </>
                ) : (
                   <p>{"You have to login to see the comments"}</p>
                )}
             </div>
          </section>
+         {isCommentsSectionExpanded ? (
+            <CommentsSection comments={comments} />
+         ) : null}
+         <CommentCreator />
       </article>
    );
 }

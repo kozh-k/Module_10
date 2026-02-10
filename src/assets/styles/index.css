@@ -1,13 +1,31 @@
+:root {
+   --color-secondary: #FF8811;
+   --bg-color-primary: #1b2037;
+   --bg-color-secondary: #0E1223;
+   --text-color-primary: #ffffff;
+   --text-color-secondary: #8791B7;
+   --border-color: #384162;
+}
+
+[theme="light"] {
+   --color-secondary: #FF8811;
+   --bg-color-primary: #FAFAFA;
+   --bg-color-secondary: #FFFFFF;
+   --text-color-primary: #1B2037;
+   --text-color-secondary: #667085;
+   --border-color: #384162;
+}
+
 body {
    font-family: "Inter", sans-serif;
    font-weight: 500;
    font-size: 18px;
-   color: white;
-   background-color: #1B2037;
+   color: var(--text-color-primary);
+   background-color: var(--bg-color-primary);
+   height: 100%;
 }
 
 .container {
    max-width: 1200px;
    margin: 0 auto;
 }
-

@@ -1,17 +1,32 @@
+.inputContainer {
+   width: 100%;
+}
+
 .input {
    display: block;
    background-color: #151A2D;
    border: 1px solid #384162;
    width: 100%;
-   
+   font-size: 14px;
 }
 
-.smInput {
+.sm {
    height: 48px;
    padding: 14px 14px 14px 14px;
 }
 
-.lgInput {
+.lg {
    height: 58px;
    padding: 14px 14px 24px 14px;
+}
+
+
+.inputHeader {
+   font-size: 14px;
+   height: 20px;
+   margin-bottom: 12px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px;
 }

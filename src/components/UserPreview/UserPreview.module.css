@@ -1,0 +1,33 @@
+.postHeader {
+   font-size: 16px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 12px;
+}
+
+.postHeader img {
+   object-fit: contain;
+   border-radius: 50%;
+   width: 48px;
+   height: 48px;
+}
+
+.postHeader div {
+   font-size: 16px;
+   line-height: 150%;
+   height: 48px;
+   display: flex;
+   flex-direction: column;
+}
+
+.postAuthor {
+   height: 24px;
+   vertical-align: middle;
+}
+
+.postTime {
+   height: 24px;
+   vertical-align: middle;
+   color: #8791b7;
+}

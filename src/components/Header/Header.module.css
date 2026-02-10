@@ -1,7 +1,7 @@
 .header {
    margin: 0 auto;
    box-sizing: border-box;
-   max-width:100%;
+   width:100%;
    height: 68px;
    padding: 12px 24px;
    display: flex;

@@ -1,20 +1,43 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Form from "../../components/Form/Form";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Input from "../../components/UI/Input/Input";
+import Button from "../../components/UI/Button/Button";
+import styles from "./SignUpPage.module.css";
+import emailIcon from "../../assets/images/email/email.svg";
+import eyeIcon from "../../assets/images/eye/eye.svg";
 
 export default function SignUpPage() {
    const [isLoading, setIsLoading] = useState(false);
-
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
    const navigate = useNavigate();
 
-   const signUpUser = async (email: string, password: string) => {
+   const handleEmailInputChange = (
+      event: React.ChangeEvent<HTMLInputElement>,
+   ): void => {
+      setEmail(event.target.value);
+   };
+
+   const handlePasswordInputChange = (
+      event: React.ChangeEvent<HTMLInputElement>,
+   ): void => {
+      setPassword(event.target.value);
+   };
+
+   const signUpUser = async (
+      event: React.FormEvent<HTMLFormElement>,
+      email: string,
+      password: string,
+   ) => {
+      event.preventDefault();
+
       setIsLoading(true);
       try {
          console.log("Регистрация:", email, password);
          //request logic
-         navigate("/dashboard");
+         navigate("/home");
       } catch (error) {
          console.error("Sign Up error", error);
       } finally {
@@ -23,23 +46,63 @@ export default function SignUpPage() {
    };
 
    return (
-      <>
-         <Header />
-         <div className="container">
-            <section>
-               <h1>Create an account</h1>
-               <p>Enter your email and password to sign up for this app</p>
-            </section>
-            <Form buttonText="Sign Up" onSubmit={signUpUser} />
-            <section>
-               <p></p>
-               <p>
-                  Already have an account?
-                  <Link to="/signin">Sign in</Link>
-               </p>
-            </section>
-         </div>
+      <div className={styles.wrapper}>
+         <Header isNavigationVisible={false} />
+         <main>
+            <div className="container">
+               <article className={styles.content}>
+                  <section className={styles.formHeader}>
+                     <h1>Create an account</h1>
+                     <p>
+                        Enter your email and password to sign up for this app
+                     </p>
+                  </section>
+                  <form
+                     onSubmit={(event) => {
+                        signUpUser(event, email, password);
+                     }}
+                  >
+                     <div className={styles.formContainer}>
+                        <Input
+                           id="emailInput"
+                           placeholder="Enter email"
+                           value={email}
+                           onChange={handleEmailInputChange}
+                           height="sm"
+                           label="Email"
+                           icon={emailIcon}
+                           alt="email icon"
+                        />
+                        <Input
+                           id="passwordInput"
+                           placeholder="Enter password"
+                           value={password}
+                           onChange={handlePasswordInputChange}
+                           height="sm"
+                           label="Password"
+                           icon={eyeIcon}
+                           alt="eye icon"
+                        />
+                     </div>
+                     <Button text="Sign Up" width={327} />
+                  </form>
+                  <section className={styles.formFooter}>
+                     <p className={styles.formFooterTerms}>
+                        By clicking continue, you agree to our{" "}
+                        <span>Terms of Service</span> and{" "}
+                        <span>Privacy Policy</span>
+                     </p>
+                     <p className={styles.formFooterSignIn}>
+                        Forgot to create an account?{" "}
+                        <span>
+                           <Link to="/signin">Sign in</Link>
+                        </span>
+                     </p>
+                  </section>
+               </article>
+            </div>
+         </main>
          <Footer />
-      </>
+      </div>
    );
 }

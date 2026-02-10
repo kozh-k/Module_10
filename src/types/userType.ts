@@ -1,12 +1,12 @@
-import type { Theme } from "./themeType";
-
-export interface IUser {
+export interface User {
    id: number;
    name: string;
+   handle: string;
    avatar?: string;
    isLoggedIn: boolean;
-   theme: Theme;
+}
+
+export interface UserContextType extends User{
    login: (email: string, password: string) => Promise<void>;
    logout: () => void;
-   toggleTheme: (theme: Theme) => void;
 }

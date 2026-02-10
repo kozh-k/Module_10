@@ -33,7 +33,7 @@ main {
 
 .content {
    width: 375px;
-   height: 422px;
+   height: 374px;
    padding: 0 24px;
    text-align: center;
    margin: 140px auto auto auto;
@@ -55,17 +55,6 @@ main {
    display: flex;
    flex-direction: column;
    gap: 24px;
-}
-
-.formFooterTerms {
-   font-weight: 400;
-   font-size: 12px;
-   line-height: 150%;
-   color: #8791b7;
-}
-
-.formFooterTerms span {
-   color: #ffffff;
 }
 
 .formFooterSignIn {

@@ -15,7 +15,7 @@ export default function PostCreator() {
          <img src={user.avatar} alt="user avatar" />
          <div>
             <p>What's happening?</p>
-            <Button text="Tell everyone" onClick={handleClick}/>
+            <Button text="Tell everyone" onClick={handleClick} width={188}/>
          </div>
       </article>
    );

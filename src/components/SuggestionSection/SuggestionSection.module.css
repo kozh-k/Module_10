@@ -1,0 +1,15 @@
+.suggestionSection {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.suggestedPeople, .suggestedCommunities {
+   width: 341px;
+   padding: 24px;
+   background-color: var(--bg-color-secondary);
+   border: 2px solid var(--border-color);
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
