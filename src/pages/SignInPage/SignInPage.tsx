@@ -36,6 +36,7 @@ export default function SignInPage() {
       setIsLoading(true);
       try {
          console.log("Вход:", email, password);
+         console.log(isLoading);
          //request logic
          navigate("/home");
       } catch (error) {

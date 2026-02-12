@@ -36,6 +36,7 @@ export default function SignUpPage() {
       setIsLoading(true);
       try {
          console.log("Регистрация:", email, password);
+         console.log(isLoading);
          //request logic
          navigate("/home");
       } catch (error) {
