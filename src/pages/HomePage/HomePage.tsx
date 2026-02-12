@@ -11,7 +11,7 @@ function HomePage() {
    const user = useContext(UserContext);
 
    return (
-      <>
+      <div className={styles.wrapper}>
          <Header isNavigationVisible={true} />
          <main className={styles.main}>
             <div className={styles.postsContainer}>
@@ -70,7 +70,7 @@ function HomePage() {
             ) : null}
          </main>
          <Footer />
-      </>
+      </div>
    );
 }
 
