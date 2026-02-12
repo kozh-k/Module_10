@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext/UserContextProvider";
 import ThemeContextProvider from "./contexts/ThemeContext/ThemeContextProvider";
 import HomePage from "./pages/HomePage/HomePage";
@@ -9,7 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
    return (
-      <BrowserRouter>
+      <HashRouter>
          <UserContextProvider>
             <ThemeContextProvider>
                <Routes>
@@ -21,7 +21,7 @@ function App() {
                </Routes>
             </ThemeContextProvider>
          </UserContextProvider>
-      </BrowserRouter>
+      </HashRouter>
    );
 }
 
