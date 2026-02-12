@@ -3,7 +3,7 @@
    "private": true,
    "version": "0.0.0",
    "type": "module",
-   "homepage": "./", 
+   "homepage": "https://kozh-k.github.io/Module_10",
    "scripts": {
       "dev": "vite",
       "build": "tsc -b && vite build",
