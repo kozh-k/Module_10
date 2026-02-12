@@ -1,10 +1,11 @@
 .postCreator {
    font-size: 14px;
+   font-weight: 400;
    width: 700px;
    max-height: 88px;
-   border: 2px solid #384162;
-   background-color: #0E1223;
-   margin: 26px auto;
+   border: 2px solid var(--border-color);
+   background-color: var(--bg-color-secondary);
+   margin: 0 auto 24px auto;
    padding: 12px;
    display: flex;
    flex-direction: row;
@@ -26,4 +27,17 @@
    justify-content: space-between;
    align-items: center;
    gap: 12px;
+}
+
+@media (max-width: 768px) {
+   .postCreator {
+      width: 375px;
+      max-width: 100%;
+      max-height: 60px;
+   }
+
+   .postCreator img {
+      width: 32px;
+      height: 32px;
+   }
 }

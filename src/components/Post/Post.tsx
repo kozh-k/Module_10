@@ -68,10 +68,10 @@ export default function Post({
                )}
             </div>
          </section>
-         {isCommentsSectionExpanded ? (
+         {isCommentsSectionExpanded && user.isLoggedIn ? (
             <CommentsSection comments={comments} />
          ) : null}
-         <CommentCreator />
+         {user.isLoggedIn ? <CommentCreator /> : null}
       </article>
    );
 }

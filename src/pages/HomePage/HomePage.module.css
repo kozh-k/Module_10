@@ -1,0 +1,24 @@
+.main {
+   margin: 24px 24px 0 0;
+   /* display: grid;
+   grid-template-columns: 1fr 341px; */
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+
+.postsContainer {
+   margin-left: calc((100vw - 700px) / 2);
+}
+
+@media (max-width: 1400px) {
+   .main {
+      justify-content: center;
+      margin: 24px 0 0 0;
+   }
+
+   .postsContainer {
+      margin-left: 0;
+   }
+}

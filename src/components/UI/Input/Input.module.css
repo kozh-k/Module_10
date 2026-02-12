@@ -4,8 +4,8 @@
 
 .input {
    display: block;
-   background-color: #151A2D;
-   border: 1px solid #384162;
+   background-color: var(--input-color);
+   border: 1px solid var(--border-color);
    width: 100%;
    font-size: 14px;
 }

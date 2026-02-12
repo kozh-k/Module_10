@@ -5,6 +5,7 @@
    --text-color-primary: #ffffff;
    --text-color-secondary: #8791B7;
    --border-color: #384162;
+   --input-color: #151A2D;
 }
 
 [theme="light"] {
@@ -13,7 +14,8 @@
    --bg-color-secondary: #FFFFFF;
    --text-color-primary: #1B2037;
    --text-color-secondary: #667085;
-   --border-color: #384162;
+   --border-color: #E0E2E7;
+   --input-color: #ffffff;
 }
 
 body {
@@ -28,4 +30,13 @@ body {
 .container {
    max-width: 1200px;
    margin: 0 auto;
+   width: 100%;
+   padding: 0 20px;
+   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+   .container {
+      padding: 0 10px;
+   }
 }
