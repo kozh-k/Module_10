@@ -1,5 +1,7 @@
 import type { ChangeEvent } from "react";
-import styles from "./Input.module.css";
+import styles from "@/components/UI/Input/Input.module.css";
+import Icon from "../Icon/Icon";
+import type { IconName } from "@/constants/icons";
 
 interface IInputProps {
    id: string;
@@ -8,8 +10,7 @@ interface IInputProps {
    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
    height: "sm" | "lg";
    label: string;
-   icon: string;
-   alt: string;
+   icon: IconName;
 }
 
 export default function Input({
@@ -20,12 +21,11 @@ export default function Input({
    height,
    label,
    icon,
-   alt,
 }: IInputProps) {
    return (
       <div className={styles.inputContainer}>
          <div className={styles.inputHeader}>
-            <img src={icon} alt={alt} />
+            <Icon name={icon} />
             <label htmlFor={id}>{label}</label>
          </div>
          <input

@@ -1,11 +1,11 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import UserContextProvider from "./contexts/UserContext/UserContextProvider";
-import ThemeContextProvider from "./contexts/ThemeContext/ThemeContextProvider";
-import HomePage from "./pages/HomePage/HomePage";
-import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import SignInPage from "./pages/SignInPage/SignInPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import UserContextProvider from "@/contexts/UserContext/UserContextProvider";
+import ThemeContextProvider from "@/contexts/ThemeContext/ThemeContextProvider";
+import HomePage from "@/pages/HomePage/HomePage";
+import SignUpPage from "@/pages/SignUpPage/SignUpPage";
+import SignInPage from "@/pages/SignInPage/SignInPage";
+import ErrorPage from "@/pages/ErrorPage/ErrorPage";
+import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 
 function App() {
    return (
@@ -13,11 +13,12 @@ function App() {
          <UserContextProvider>
             <ThemeContextProvider>
                <Routes>
-                  <Route path="*" element={<HomePage />} />
+                  <Route path="/" element={<HomePage />} />
                   <Route path="/signup" element={<SignUpPage />} />
                   <Route path="/signin" element={<SignInPage />} />
                   <Route path="/error" element={<ErrorPage />} />
                   <Route path="/notfound" element={<NotFoundPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
                </Routes>
             </ThemeContextProvider>
          </UserContextProvider>

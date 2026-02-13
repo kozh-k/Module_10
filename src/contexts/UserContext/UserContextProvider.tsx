@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { UserContext } from "./UserContext";
-import { users } from "../../data/users";
+import { UserContext } from "@/contexts/UserContext/UserContext";
+import { currentUser } from "@/data/currentUser";
 
 interface IUserContextProviderProps {
    children: React.ReactNode;
@@ -9,20 +9,32 @@ interface IUserContextProviderProps {
 export default function UserContextProvider({
    children,
 }: IUserContextProviderProps) {
-   const [userData, setUserData] = useState(users[0]);
+   const [userData, setUserData] = useState(currentUser);
+   const [accessToken, setAccessToken] = useState<string>("");
 
    const login = async (email: string, password: string): Promise<void> => {
-      //await request...
-      console.log(email, password);
-      setUserData({ ...userData, isLoggedIn: true });
+      try {
+         //await request...
+         
+         //const responce = await...
+         // const data = await responce.json();
+         // setAccessToken(data.accessToken);
+
+         console.log(email, password);
+         setUserData({ ...userData, isLoggedIn: true });
+      } catch (error) {
+         console.log('login', error);
+      }
    };
 
    const logout = (): void => {
+      setAccessToken('');
       setUserData({ ...userData, isLoggedIn: false });
    };
 
    const value = {
       ...userData,
+      accessToken,
       login,
       logout,
    };

@@ -1,7 +1,7 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import styles from "./NotFoundPage.module.css";
-import whiteNotFoundIcon from "../../assets/images/notFound/whiteNotFound.svg";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import styles from "@/pages/NotFoundPage/NotFoundPage.module.css";
+import Icon from "@/components/UI/Icon/Icon";
 
 export default function NotFoundPage() {
    return (
@@ -10,7 +10,7 @@ export default function NotFoundPage() {
          <main className={styles.main}>
             <div className="container">
                <div className={styles.errorContainer}>
-                  <img src={whiteNotFoundIcon} alt="cross icon" />
+                  <Icon name={"notFound"} />
                   <h1 className={styles.errorText}>Page not found</h1>
                </div>
             </div>

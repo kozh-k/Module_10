@@ -1,17 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Input from "../../components/UI/Input/Input";
-import Button from "../../components/UI/Button/Button";
-import styles from "./SignInPage.module.css";
-import emailIcon from "../../assets/images/email/email.svg";
-import eyeIcon from "../../assets/images/eye/eye.svg";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import Input from "@/components/UI/Input/Input";
+import Button from "@/components/UI/Button/Button";
+import styles from "@/pages/SignInPage/SignInPage.module.css";
 
 export default function SignInPage() {
    const [isLoading, setIsLoading] = useState(false);
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+      {},
+   );
    const navigate = useNavigate();
 
    const handleEmailInputChange = (
@@ -26,16 +27,37 @@ export default function SignInPage() {
       setPassword(event.target.value);
    };
 
+   const validateForm = (): boolean => {
+      const emailRegExp = /.+@.+\..+/;
+
+      if (!email || !emailRegExp.test(email)) {
+         setErrors({ email: "email error" });
+         return false;
+      }
+
+      if (!password || password.length < 8) {
+         setErrors({ password: "password error" });
+         return false;
+      }
+
+      return true;
+   };
+
    const signInUser = async (
-      event: React.FormEvent<HTMLFormElement>,
+      event: React.SubmitEvent<HTMLFormElement>,
       email: string,
       password: string,
    ) => {
       event.preventDefault();
 
+      if (!validateForm()) {
+         console.log(errors);
+         return;
+      }
+
       setIsLoading(true);
       try {
-         console.log("Вход:", email, password);
+         console.log("signing in:", email, password);
          console.log(isLoading);
          //request logic
          navigate("/home");
@@ -44,6 +66,10 @@ export default function SignInPage() {
       } finally {
          setIsLoading(false);
       }
+   };
+
+   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+      await signInUser(event, email, password);
    };
 
    return (
@@ -58,11 +84,7 @@ export default function SignInPage() {
                         Enter your email and password to sign in into this app
                      </p>
                   </section>
-                  <form
-                     onSubmit={(event) => {
-                        signInUser(event, email, password);
-                     }}
-                  >
+                  <form onSubmit={handleSubmit}>
                      <div className={styles.formContainer}>
                         <Input
                            id="emailInput"
@@ -71,8 +93,7 @@ export default function SignInPage() {
                            onChange={handleEmailInputChange}
                            height="sm"
                            label="Email"
-                           icon={emailIcon}
-                           alt="email icon"
+                           icon={"email"}
                         />
                         <Input
                            id="passwordInput"
@@ -81,11 +102,10 @@ export default function SignInPage() {
                            onChange={handlePasswordInputChange}
                            height="sm"
                            label="Password"
-                           icon={eyeIcon}
-                           alt="eye icon"
+                           icon={"eye"}
                         />
                      </div>
-                     <Button text="Sign Up" width={327} />
+                     <Button text="Sign Up" size={"xxl"} />
                   </form>
                   <section className={styles.formFooter}>
                      <p className={styles.formFooterSignIn}>

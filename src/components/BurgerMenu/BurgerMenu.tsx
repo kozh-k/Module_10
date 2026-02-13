@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./BurgerMenu.module.css";
-import logo from "../../assets/images/logo/logo.png";
 import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext/UserContext";
+import styles from "@/components/BurgerMenu/BurgerMenu.module.css";
+import logo from "@/assets/images/logo/logo.png";
+import { UserContext } from "@/contexts/UserContext/UserContext";
 
 export default function MobileMenu() {
    const user = useContext(UserContext);

@@ -1,5 +1,45 @@
 .button {
    height: 44px;
-   background-color: #FF8811;
+   background-color: #ff8811;
    font-size: 14px;
+}
+
+.xs {
+   width: 107px;
+}
+.sm {
+   width: 144px;
+}
+.md {
+   width: 188px;
+}
+.lg {
+   width: 211px;
+}
+.xl {
+   width: 244px;
+}
+.xxl {
+   width: 327px;
+}
+
+@media (max-width: 768px) {
+   .xs {
+      width: 107px;
+   }
+   .sm {
+      width: 144px;
+   }
+   .md {
+      width: 140px;
+   }
+   .lg {
+      width: 163px;
+   }
+   .xl {
+      width: 244px;
+   }
+   .xxl {
+      width: 339px;
+   }
 }

@@ -1,12 +1,7 @@
-import type { User } from "../../types/userType";
-import UserPreview from "../UserPreview/UserPreview";
-import styles from "./SuggestionSection.module.css";
-
-interface Community {
-   name: string;
-   avatar: string;
-   membersQuantity: number;
-}
+import type { User } from "@/types/userType";
+import UserPreview from "@/components/UserPreview/UserPreview";
+import styles from "@/components/SuggestionSection/SuggestionSection.module.css";
+import type { Community } from "@/types/communityType";
 
 interface SuggestionSectionProps {
    users: Omit<User, "isLoggedIn" | "id">[];
@@ -28,7 +23,7 @@ export default function SuggestionSection({
                           username={user.name}
                           avatar={user.avatar}
                           attachment={user.handle}
-                          style={{padding: '12px 0'}}
+                          style={{ padding: "12px 0" }}
                        />
                     );
                  })
@@ -43,7 +38,7 @@ export default function SuggestionSection({
                           username={community.name}
                           avatar={community.avatar}
                           attachment={community.membersQuantity + " members"}
-                          style={{padding: '12px 0'}}
+                          style={{ padding: "12px 0" }}
                        />
                     );
                  })

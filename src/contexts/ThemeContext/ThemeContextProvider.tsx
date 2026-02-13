@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ThemeContext } from "./ThemeContext";
-import type { Theme } from "../../types/themeType";
+import { ThemeContext } from "@/contexts/ThemeContext/ThemeContext";
+import type { Theme } from "@/types/themeType";
 
 interface IThemeContextProviderProps {
    children: React.ReactNode;
@@ -9,20 +9,23 @@ interface IThemeContextProviderProps {
 export default function ThemeContextProvider({
    children,
 }: IThemeContextProviderProps) {
-   const getCurrentTheme = (): Theme => {
+   const [theme, setTheme] = useState<Theme>(() => {
       const currentTheme = localStorage.getItem("theme");
-      if (currentTheme) {
-         return currentTheme as Theme;
-      } else {
-         return "dark";
-      }
-   };
+      return (currentTheme as Theme) || "dark";
+   });
 
-   const [theme, setTheme] = useState<Theme>(getCurrentTheme());
+   // const getCurrentTheme = (): Theme => {
+   //    const currentTheme = localStorage.getItem("theme");
+   //    if (currentTheme) {
+   //       return currentTheme as Theme;
+   //    } else {
+   //       return "dark";
+   //    }
+   // };
 
    useEffect(() => {
       const htmlElement = document.documentElement;
-      htmlElement.setAttribute("theme", theme);
+      htmlElement.setAttribute("data-theme", theme);
 
       localStorage.setItem("theme", theme);
    }, [theme]);

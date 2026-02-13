@@ -1,10 +1,10 @@
-import styles from "./CommentsSection.module.css";
+import styles from "@/components/CommentsSection/CommentsSection.module.css";
 
-interface ICommentSectionProps {
+interface CommentSectionProps {
    comments: string[];
 }
 
-export default function CommentsSection({ comments }: ICommentSectionProps) {
+export default function CommentsSection({ comments }: CommentSectionProps) {
    return (
       <section>
          <ul className={styles.commentsList}>

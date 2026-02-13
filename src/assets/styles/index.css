@@ -8,7 +8,7 @@
    --input-color: #151A2D;
 }
 
-[theme="light"] {
+[data-theme="light"] {
    --color-secondary: #FF8811;
    --bg-color-primary: #FAFAFA;
    --bg-color-secondary: #FFFFFF;

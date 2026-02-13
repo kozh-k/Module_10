@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo/logo.png";
-import { UserContext } from "../../contexts/UserContext/UserContext";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import styles from "./Header.module.css";
+import logo from "@/assets/images/logo/logo.png";
+import { UserContext } from "@/contexts/UserContext/UserContext";
+import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
+import styles from "@/components/Header/Header.module.css";
 
 interface IHeaderProps {
    isNavigationVisible: boolean;

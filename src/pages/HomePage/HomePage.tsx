@@ -1,11 +1,14 @@
-import Header from "../../components/Header/Header";
-import PostCreator from "../../components/PostCreator/PostCreator";
-import Post from "../../components/Post/Post";
-import Footer from "../../components/Footer/Footer";
-import SuggestionSection from "../../components/SuggestionSection/SuggestionSection";
-import styles from "./HomePage.module.css";
+import Header from "@/components/Header/Header";
+import PostCreator from "@/components/PostCreator/PostCreator";
+import Post from "@/components/Post/Post";
+import Footer from "@/components/Footer/Footer";
+import SuggestionSection from "@/components/SuggestionSection/SuggestionSection";
+import styles from "@/pages/HomePage/HomePage.module.css";
 import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext/UserContext";
+import { UserContext } from "@/contexts/UserContext/UserContext";
+import { posts } from "@/data/posts";
+import { suggestedUsers } from "@/data/suggestedUsers";
+import { suggestedCommunities } from "@/data/suggestedCommunities";
 
 function HomePage() {
    const user = useContext(UserContext);
@@ -16,56 +19,23 @@ function HomePage() {
          <main className={styles.main}>
             <div className={styles.postsContainer}>
                <PostCreator />
-               <Post
-                  postTime="3 min ago"
-                  image="https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg"
-                  description="Post description"
-                  likesQuantity={10}
-                  comments={["first", "second"]}
-               />
-               <Post
-                  postTime="3 min ago"
-                  description="Post description"
-                  likesQuantity={10}
-                  comments={["first", "second"]}
-               />
+               {posts.map((post) => {
+                  return (
+                     <Post
+                        owner={post.owner}
+                        date={post.date}
+                        image={post.image}
+                        description={post.description}
+                        likesQuantity={post.likesQuantity}
+                        comments={post.comments}
+                     />
+                  );
+               })}
             </div>
             {user.isLoggedIn ? (
                <SuggestionSection
-                  users={[
-                     {
-                        name: "Name Surname",
-                        avatar:
-                           "https://innostudio.de/fileuploader/images/default-avatar.png",
-                        handle: "@namesurname",
-                     },
-                     {
-                        name: "Name Surname",
-                        avatar:
-                           "https://innostudio.de/fileuploader/images/default-avatar.png",
-                        handle: "@namesurname",
-                     },
-                     {
-                        name: "Name Surname",
-                        avatar:
-                           "https://innostudio.de/fileuploader/images/default-avatar.png",
-                        handle: "@namesurname",
-                     },
-                  ]}
-                  communities={[
-                     {
-                        name: "Name Surname",
-                        avatar:
-                           "https://innostudio.de/fileuploader/images/default-avatar.png",
-                        membersQuantity: 100,
-                     },
-                     {
-                        name: "Name Surname",
-                        avatar:
-                           "https://innostudio.de/fileuploader/images/default-avatar.png",
-                        membersQuantity: 100,
-                     },
-                  ]}
+                  users={suggestedUsers}
+                  communities={suggestedCommunities}
                />
             ) : null}
          </main>

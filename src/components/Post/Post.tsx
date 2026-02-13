@@ -1,29 +1,23 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext/UserContext";
-import dropDown from "../../assets/images/dropDown/dropDown.svg";
-import likeIcon from "../../assets/images/like/like.svg";
-import commentIcon from "../../assets/images/comment/comment.svg";
-import CommentsSection from "../CommentsSection/CommentsSection";
-import styles from "./Post.module.css";
-import CommentCreator from "../CommentCreator/CommentCreator";
-import UserPreview from "../UserPreview/UserPreview";
-
-interface PostProps {
-   postTime: string;
-   image?: string;
-   description: string;
-   likesQuantity: number;
-   comments: string[];
-}
+//date-fns lib to manipulate dates
+import { formatDistanceToNow } from "date-fns";
+import { enUS } from "date-fns/locale";
+import { useState, useContext } from "react";
+import { UserContext } from "@/contexts/UserContext/UserContext";
+import CommentsSection from "@/components/CommentsSection/CommentsSection";
+import styles from "@/components/Post/Post.module.css";
+import CommentCreator from "@/components/CommentCreator/CommentCreator";
+import UserPreview from "@/components/UserPreview/UserPreview";
+import type { Post } from "@/types/postType";
+import Icon from "../UI/Icon/Icon";
 
 export default function Post({
-   postTime,
+   owner,
+   date,
    image,
    description,
    likesQuantity,
    comments,
-}: PostProps) {
+}: Post) {
    const user = useContext(UserContext);
 
    const [isCommentsSectionExpanded, setIsCommentsSectionExpanded] =
@@ -33,12 +27,19 @@ export default function Post({
       setIsCommentsSectionExpanded(!isCommentsSectionExpanded);
    };
 
+   const calculatePostTimeAgo = (): string => {
+      return formatDistanceToNow(date, {
+         addSuffix: true,
+         locale: enUS,
+      }).replace("about ", "");
+   };
+
    return (
       <article className={styles.post}>
          <UserPreview
-            username={user.name}
-            avatar={user.avatar}
-            attachment={postTime}
+            username={owner.name}
+            avatar={owner.avatar}
+            attachment={calculatePostTimeAgo()}
          />
          <figure>
             {image ? (
@@ -48,11 +49,11 @@ export default function Post({
          </figure>
          <section className={styles.likesAndComments}>
             <div>
-               <img src={likeIcon} alt="like icon" />
+               <Icon name={'like'}/>
                <span>{`${likesQuantity} likes`}</span>
             </div>
             <div>
-               <img src={commentIcon} alt="comments icon" />
+               <Icon name={'comment'}/>
                {user.isLoggedIn ? (
                   <>
                      <span>{`${comments.length} comments`}</span>
@@ -60,7 +61,7 @@ export default function Post({
                         className={styles.expandButton}
                         onClick={handleExpandButton}
                      >
-                        <img src={dropDown} alt="dropdown icon" />
+                        <Icon name={'dropDown'}/>
                      </button>
                   </>
                ) : (

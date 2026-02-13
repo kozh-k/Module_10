@@ -1,4 +1,4 @@
-import styles from "./UserPreview.module.css";
+import styles from "@/components/UserPreview/UserPreview.module.css";
 
 interface UserPreviewProps {
    username: string;

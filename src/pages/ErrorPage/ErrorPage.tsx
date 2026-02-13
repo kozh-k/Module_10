@@ -1,7 +1,7 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import styles from "./ErrorPage.module.css";
-import whiteCrossIcon from "../../assets/images/cross/white-cross.svg";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import styles from "@/pages/ErrorPage/ErrorPage.module.css";
+import Icon from "@/components/UI/Icon/Icon";
 
 export default function ErrorPage() {
    return (
@@ -10,7 +10,7 @@ export default function ErrorPage() {
          <main className={styles.main}>
             <div className="container">
                <div className={styles.errorContainer}>
-                  <img src={whiteCrossIcon} alt="cross icon" />
+                  <Icon name={"cross"} />
                   <h1 className={styles.errorText}>
                      Oops...
                      <br />
