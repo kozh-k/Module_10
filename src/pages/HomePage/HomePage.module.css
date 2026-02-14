@@ -6,26 +6,10 @@
 
 .main {
    flex: 1;
-   margin: 24px 24px 26px 0;
-   /* display: grid;
-   grid-template-columns: 1fr 341px; */
+   margin: 24px 0 26px 0;
+   position: relative;
    display: flex;
    flex-direction: row;
-   justify-content: space-between;
+   justify-content: center;
    align-items: flex-start;
-}
-
-.postsContainer {
-   margin-left: calc((100vw - 700px) / 2);
-}
-
-@media (max-width: 1400px) {
-   .main {
-      justify-content: center;
-      margin: 24px 0 26px 0;
-   }
-
-   .postsContainer {
-      margin-left: 0;
-   }
 }

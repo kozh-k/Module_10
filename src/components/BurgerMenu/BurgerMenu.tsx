@@ -19,7 +19,11 @@ export default function MobileMenu() {
                <img src={logo} alt="sidekick logo" />
                <span>sidekick</span>
             </a>
-            {user.isLoggedIn ? <img className={styles.burgerAvatar} src={user.avatar} alt="avatar" /> : null}
+            {user.isLoggedIn ? (
+               <Link to="/profile">
+                  <img className={styles.burgerAvatar} src={user.avatar} alt="avatar" />
+               </Link>
+            ) : null}
          </div>
          {user.isLoggedIn ? (
             <nav className={styles.burgerNav}>

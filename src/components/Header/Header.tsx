@@ -44,10 +44,12 @@ export default function Header({ isNavigationVisible }: IHeaderProps) {
          {isNavigationVisible && (
             <div className={styles.desktopNav}>
                {user.isLoggedIn ? (
-                  <div className={styles.userInfo}>
-                     <img src={user.avatar} alt="avatar" />
-                     <p>{user.name}</p>
-                  </div>
+                  <Link to="/profile">
+                     <div className={styles.userInfo}>
+                        <img src={user.avatar} alt="avatar" />
+                        <p>{user.name}</p>
+                     </div>
+                  </Link>
                ) : (
                   <nav className={styles.desktopNavLinks}>
                      <Link to="/signup">Sign Up</Link>

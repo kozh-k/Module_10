@@ -17,8 +17,8 @@ function HomePage() {
       <div className={styles.wrapper}>
          <Header isNavigationVisible={true} />
          <main className={styles.main}>
-            <div className={styles.postsContainer}>
-               <PostCreator />
+            <div className={user.isLoggedIn ? styles.postsContainer : ""}>
+               {user.isLoggedIn ? <PostCreator /> : null}
                {posts.map((post) => {
                   return (
                      <Post

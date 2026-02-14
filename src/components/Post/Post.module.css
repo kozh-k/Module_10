@@ -74,6 +74,11 @@ figcaption {
    justify-content: center;
 }
 
+.rotatedIcon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
 @media (max-width: 768px) {
    .post {
       width: 375px;

@@ -49,11 +49,11 @@ export default function Post({
          </figure>
          <section className={styles.likesAndComments}>
             <div>
-               <Icon name={'like'}/>
+               <Icon name={"like"} />
                <span>{`${likesQuantity} likes`}</span>
             </div>
             <div>
-               <Icon name={'comment'}/>
+               <Icon name={"comment"} />
                {user.isLoggedIn ? (
                   <>
                      <span>{`${comments.length} comments`}</span>
@@ -61,7 +61,14 @@ export default function Post({
                         className={styles.expandButton}
                         onClick={handleExpandButton}
                      >
-                        <Icon name={'dropDown'}/>
+                        <Icon
+                           name={"dropDown"}
+                           className={
+                              isCommentsSectionExpanded
+                                 ? styles.rotatedIcon
+                                 : ""
+                           }
+                        />
                      </button>
                   </>
                ) : (

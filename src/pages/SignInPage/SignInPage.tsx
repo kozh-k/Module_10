@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import styles from "@/pages/SignInPage/SignInPage.module.css";
+import { UserContext } from "@/contexts/UserContext/UserContext";
 
 export default function SignInPage() {
    const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,7 @@ export default function SignInPage() {
       {},
    );
    const navigate = useNavigate();
+   const user = useContext(UserContext);
 
    const handleEmailInputChange = (
       event: React.ChangeEvent<HTMLInputElement>,
@@ -57,10 +59,9 @@ export default function SignInPage() {
 
       setIsLoading(true);
       try {
-         console.log("signing in:", email, password);
-         console.log(isLoading);
-         //request logic
-         navigate("/home");
+         console.log(isLoading)
+         await user.login(email, password);
+         navigate("/");
       } catch (error) {
          console.error("Sign In error", error);
       } finally {
