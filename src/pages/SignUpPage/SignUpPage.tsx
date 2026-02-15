@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
+import PasswordInput from "@/components/UI/Input/PasswordInput";
 import styles from "@/pages/SignUpPage/SignUpPage.module.css";
 import { UserContext } from "@/contexts/UserContext/UserContext";
 
@@ -33,12 +34,14 @@ export default function SignUpPage() {
       const emailRegExp = /.+@.+\..+/;
 
       if (!email || !emailRegExp.test(email)) {
-         setErrors({ email: "email error" });
+         setErrors({ email: "Email is not valid" });
          return false;
       }
 
       if (!password || password.length < 8) {
-         setErrors({ password: "password error" });
+         setErrors({
+            password: "Password length must be at least 8 symbols",
+         });
          return false;
       }
 
@@ -63,7 +66,13 @@ export default function SignUpPage() {
          await user.register(email, password);
          navigate("/");
       } catch (error) {
-         console.error("Sign Up error", error);
+         if (error instanceof Error && error.cause) {
+            const cause = error.cause as { type: "email" | "password" };
+
+            if (cause.type === "email") {
+               setErrors({ email: error.message });
+            }
+         }
       } finally {
          setIsLoading(false);
       }
@@ -95,8 +104,9 @@ export default function SignUpPage() {
                            height="sm"
                            label="Email"
                            icon={"email"}
+                           errorText={errors.email || undefined}
                         />
-                        <Input
+                        <PasswordInput
                            id="passwordInput"
                            placeholder="Enter password"
                            value={password}
@@ -104,6 +114,7 @@ export default function SignUpPage() {
                            height="sm"
                            label="Password"
                            icon={"eye"}
+                           errorText={errors.password || undefined}
                         />
                      </div>
                      <Button text="Sign Up" size={"xxl"} />

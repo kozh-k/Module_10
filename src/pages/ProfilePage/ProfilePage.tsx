@@ -16,9 +16,10 @@ export default function ProfilePage() {
       <div className={styles.wrapper}>
          <Header isNavigationVisible={true} />
          <main className={styles.main}>
+            
             <Switch
-               text={"Light theme"}
-               isChecked={false}
+               text={`${theme.theme} theme`}
+               isChecked={theme.theme === 'light'}
                onChange={handleSwitch}
             />
          </main>

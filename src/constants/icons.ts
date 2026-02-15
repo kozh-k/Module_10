@@ -14,6 +14,9 @@ import notFoundLight from "@/assets/images/notFound/notFoundLight.svg";
 import notFoundDark from "@/assets/images/notFound/notFoundDark.svg";
 import writeLight from "@/assets/images/write/writeLight.svg";
 import writeDark from "@/assets/images/write/writeDark.svg";
+import keyboardLight from "@/assets/images/keyboard/keyboardLight.svg";
+import keyboardDark from "@/assets/images/keyboard/keyboardDark.svg";
+import infoRed from "@/assets/images/info/infoRed.svg";
 
 export const ICONS = {
    comment: { light: commentLight, dark: commentDark },
@@ -24,6 +27,8 @@ export const ICONS = {
    eye: { light: eyeLight, dark: eyeDark },
    notFound: { light: notFoundLight, dark: notFoundDark },
    write: { light: writeLight, dark: writeDark },
+   keyboard: { light: keyboardLight, dark: keyboardDark },
+   info: { light: infoRed, dark: infoRed },
 } as const;
 
 export type IconName = keyof typeof ICONS;
