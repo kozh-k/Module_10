@@ -8,10 +8,12 @@ interface IInputProps {
    placeholder: string;
    value: string;
    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+   onFocus?: () => void;
+   onBlur?: () => void;
    height: "sm" | "lg";
    label: string;
    icon: IconName;
-   errorText: string | undefined;
+   errorText?: string;
 }
 
 export default function Input({
@@ -19,6 +21,8 @@ export default function Input({
    placeholder,
    value,
    onChange,
+   onFocus,
+   onBlur,
    height,
    label,
    icon,
@@ -29,14 +33,21 @@ export default function Input({
          <div className={styles.inputHeader}>
             <Icon name={icon} />
             <label htmlFor={id}>{label}</label>
+            {value ? <Icon name={errorText ? "crossRed" : "check"} /> : null}
          </div>
          <input
-            className={`${styles.input} ${styles[height]}`}
+            className={
+               value && errorText
+                  ? `${styles.errorInput} ${styles[height]}`
+                  : `${styles.input} ${styles[height]}`
+            }
             id={id}
             type="text"
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
          />
          <div className={errorText ? styles.inputError : styles.inputErrorNone}>
             <Icon name={"info"} />

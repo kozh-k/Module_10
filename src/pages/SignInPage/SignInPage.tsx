@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Input from "@/components/UI/Input/Input";
@@ -11,12 +11,29 @@ import { UserContext } from "@/contexts/UserContext/UserContext";
 export default function SignInPage() {
    const [isLoading, setIsLoading] = useState(false);
    const [email, setEmail] = useState("");
+   const [emailTouched, setEmailTouched] = useState(false);
    const [password, setPassword] = useState("");
+   const [passwordTouched, setPasswordTouched] = useState(false);
    const [errors, setErrors] = useState<{ email?: string; password?: string }>(
       {},
    );
    const navigate = useNavigate();
    const user = useContext(UserContext);
+
+   useEffect(() => {
+      const emailRegExp = /.+@.+\..+/;
+      const errors: { email?: string; password?: string } = {};
+
+      if (emailTouched && (!email || !emailRegExp.test(email))) {
+         errors.email = "Email is not valid";
+      }
+
+      if (passwordTouched && (!password || password.length < 6)) {
+         errors.password = "Password length must be at least 6 symbols";
+      }
+
+      setErrors(errors);
+   }, [email, password, emailTouched, passwordTouched]);
 
    const handleEmailInputChange = (
       event: React.ChangeEvent<HTMLInputElement>,
@@ -24,10 +41,30 @@ export default function SignInPage() {
       setEmail(event.target.value);
    };
 
+   const handleEmailInputFocus = () => {
+      setEmailTouched(true);
+   };
+
+   const handleEmailInputBlur = () => {
+      if (!email) {
+         setEmailTouched(false);
+      }
+   };
+
    const handlePasswordInputChange = (
       event: React.ChangeEvent<HTMLInputElement>,
    ): void => {
       setPassword(event.target.value);
+   };
+
+   const handlePasswordInputFocus = () => {
+      setPasswordTouched(true);
+   };
+
+   const handlePasswordInputBlur = () => {
+      if (!password) {
+         setPasswordTouched(false);
+      }
    };
 
    const validateForm = (): boolean => {
@@ -38,10 +75,10 @@ export default function SignInPage() {
          return false;
       }
 
-      // if (!password || password.length < 8) {
-      //    setErrors({ password: "password" });
-      //    return false;
-      // }
+      if (!password || password.length < 6) {
+         setErrors({ password: "Password length must be at least 6 symbols" });
+         return false;
+      }
 
       return true;
    };
@@ -64,7 +101,6 @@ export default function SignInPage() {
          navigate("/");
       } catch (error) {
          if (error instanceof Error && error.cause) {
-            
             const cause = error.cause as { type: "email" | "password" };
 
             if (cause.type === "email") {
@@ -101,6 +137,8 @@ export default function SignInPage() {
                            placeholder="Enter email"
                            value={email}
                            onChange={handleEmailInputChange}
+                           onFocus={handleEmailInputFocus}
+                           onBlur={handleEmailInputBlur}
                            height="sm"
                            label="Email"
                            icon={"email"}
@@ -111,10 +149,12 @@ export default function SignInPage() {
                            placeholder="Enter password"
                            value={password}
                            onChange={handlePasswordInputChange}
+                           onFocus={handlePasswordInputFocus}
+                           onBlur={handlePasswordInputBlur}
                            height="sm"
                            label="Password"
-                           icon={"eye"}
                            errorText={errors.password || undefined}
+                           isSignUpInput={false}
                         />
                      </div>
                      <Button text="Sign Up" size={"xxl"} />

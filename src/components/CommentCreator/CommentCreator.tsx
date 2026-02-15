@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import styles from "@/components/CommentCreator/CommentCreator.module.css";
+// import { posts } from "@/data/posts";
 
 export default function CommentCreator() {
    const [commentText, setCommentText] = useState("");

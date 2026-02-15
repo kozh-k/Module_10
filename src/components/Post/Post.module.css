@@ -1,6 +1,6 @@
 .post {
    width: 700px;
-   margin:0 auto;
+   margin: 0 auto;
    padding: 24px;
    border: 2px solid var(--border-color);
    background-color: var(--bg-color-secondary);
@@ -43,7 +43,6 @@
    color: var(--text-color-secondary);
 }
 
-
 .postImage {
    border-radius: 4px;
    margin-bottom: 16px;
@@ -74,9 +73,24 @@ figcaption {
    justify-content: center;
 }
 
+.expandButton {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: transform 0.3s ease;
+}
+
+.expandButton img {
+   transition: transform 0.3s ease;
+}
+
 .rotatedIcon {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease;
+   transform: rotate(180deg);
+}
+
+.rotatedIcon {
+   transform: rotate(180deg);
+   transition: transform 0.3s ease;
 }
 
 @media (max-width: 768px) {

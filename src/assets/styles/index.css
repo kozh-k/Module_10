@@ -6,6 +6,7 @@
    --text-color-secondary: #8791B7;
    --border-color: #384162;
    --input-color: #151A2D;
+   --error-color: #FF554A;
 }
 
 [data-theme="light"] {
@@ -16,6 +17,7 @@
    --text-color-secondary: #667085;
    --border-color: #E0E2E7;
    --input-color: #ffffff;
+   --error-color: #FF554A;
 }
 
 body {

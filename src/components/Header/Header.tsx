@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/images/logo/logo.png";
 import { UserContext } from "@/contexts/UserContext/UserContext";
@@ -10,8 +10,16 @@ interface IHeaderProps {
 }
 
 export default function Header({ isNavigationVisible }: IHeaderProps) {
+   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
    const user = useContext(UserContext);
 
+   const closeBurger = () => {
+      setIsBurgerOpen(false);
+   };
+
+   const toggleBurger = () => {
+      setIsBurgerOpen(!isBurgerOpen);
+   };
    return (
       <header className={styles.header}>
          <a
@@ -29,6 +37,8 @@ export default function Header({ isNavigationVisible }: IHeaderProps) {
                <input
                   type="checkbox"
                   id="burgerMenu"
+                  checked={isBurgerOpen}
+                  onChange={toggleBurger}
                   className={styles.burgerCheckbox}
                />
                <label htmlFor="burgerMenu" className={styles.burgerLabel}>
@@ -37,7 +47,10 @@ export default function Header({ isNavigationVisible }: IHeaderProps) {
                   <div></div>
                </label>
 
-               <div className={styles.burgerOverlay}></div>
+               <div
+                  className={styles.burgerOverlay}
+                  onClick={closeBurger}
+               ></div>
             </>
          ) : null}
 
@@ -61,7 +74,7 @@ export default function Header({ isNavigationVisible }: IHeaderProps) {
 
          {isNavigationVisible && (
             <div className={styles.mobileMenuWrapper}>
-               <BurgerMenu />
+               <BurgerMenu onClick={closeBurger} />
             </div>
          )}
       </header>

@@ -1,17 +1,18 @@
 import { useState, type ChangeEvent } from "react";
 import styles from "@/components/UI/Input/Input.module.css";
 import Icon from "../Icon/Icon";
-import type { IconName } from "@/constants/icons";
 
 interface IInputProps {
    id: string;
    placeholder: string;
    value: string;
    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+   onFocus?: () => void;
+   onBlur?: () => void;
    height: "sm" | "lg";
    label: string;
-   icon: IconName;
    errorText: string | undefined;
+   isSignUpInput: boolean;
 }
 
 export default function Input({
@@ -19,10 +20,12 @@ export default function Input({
    placeholder,
    value,
    onChange,
+   onFocus,
+   onBlur,
    height,
    label,
-   icon,
    errorText,
+   isSignUpInput,
 }: IInputProps) {
    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -35,24 +38,37 @@ export default function Input({
          <div className={styles.inputHeader}>
             <Icon name={"keyboard"} />
             <label htmlFor={id}>{label}</label>
+            {value ? <Icon name={errorText ? "crossRed" : "check"} /> : null}
          </div>
          <div className={styles.inputWrapper}>
             <input
-               className={`${styles.input} ${styles[height]}`}
+               className={
+                  value && errorText
+                     ? `${styles.errorInput} ${styles[height]}`
+                     : `${styles.input} ${styles[height]}`
+               }
                id={id}
                type={isPasswordVisible ? "text" : "password"}
                placeholder={placeholder}
                value={value}
                onChange={onChange}
+               onFocus={onFocus}
+               onBlur={onBlur}
             />
-            <button className={styles.eyeButton} onClick={handleClick}>
-               <Icon name={icon} />
+            <button className={styles.eyeButton} type="button" onClick={handleClick}>
+               <Icon name={isPasswordVisible ? "eyeCrossed" : "eye"} />
             </button>
          </div>
          <div className={errorText ? styles.inputError : styles.inputErrorNone}>
             <Icon name={"info"} />
             <p>{errorText}</p>
          </div>
+         {isSignUpInput && !errorText && value ? (
+            <div className={styles.inputError}>
+               <Icon name={"thumbsUp"} />
+               <p className={styles.strongPassword}>Your password is strong</p>
+            </div>
+         ) : null}
       </div>
    );
 }

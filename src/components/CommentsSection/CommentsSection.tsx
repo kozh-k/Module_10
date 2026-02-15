@@ -1,12 +1,12 @@
 import styles from "@/components/CommentsSection/CommentsSection.module.css";
 
-interface CommentSectionProps {
+interface CommentsSectionProps {
    comments: string[];
 }
 
-export default function CommentsSection({ comments }: CommentSectionProps) {
+export default function CommentsSection({ comments }: CommentsSectionProps) {
    return (
-      <section>
+      <section className={styles.commentsSection}>
          <ul className={styles.commentsList}>
             {comments.map((comment, index) => {
                return (
