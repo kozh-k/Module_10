@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { HashRouter, Route, Routes } from "react-router-dom";
+import UserContextProvider from "@/contexts/UserContext/UserContextProvider";
+import ThemeContextProvider from "@/contexts/ThemeContext/ThemeContextProvider";
+import HomePage from "@/pages/HomePage/HomePage";
+import SignUpPage from "@/pages/SignUpPage/SignUpPage";
+import SignInPage from "@/pages/SignInPage/SignInPage";
+import ErrorPage from "@/pages/ErrorPage/ErrorPage";
+import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+   return (
+      <HashRouter>
+         <UserContextProvider>
+            <ThemeContextProvider>
+               <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/signin" element={<SignInPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/error" element={<ErrorPage />} />
+                  <Route path="/notfound" element={<NotFoundPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+               </Routes>
+            </ThemeContextProvider>
+         </UserContextProvider>
+      </HashRouter>
+   );
 }
 
-export default App
+export default App;

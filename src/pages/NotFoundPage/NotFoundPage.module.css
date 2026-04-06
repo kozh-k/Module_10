@@ -1,0 +1,43 @@
+.wrapper {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+.main {
+   flex: 1;
+   display: flex;
+   align-items: center;
+   padding: 0 12px;
+}
+
+.errorContainer {
+   width: 971;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap: 47px;
+   justify-content: center;
+   align-items: center;
+}
+
+.errorText {
+   font-size: 60px;
+   font-weight: 600;
+   line-height: 150%;
+}
+
+@media (max-width: 768px) {
+   .errorContainer img {
+      width: 80px;
+      height: 80px;  
+   }
+
+   .errorText {
+      font-size: 20px;
+   }
+
+   .errorContainer {
+      gap: 0;
+   }
+}

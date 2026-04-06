@@ -1,0 +1,77 @@
+/* .burgerContainer {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(0, 0, 0, 0.2);
+   z-index: 999;
+} */
+
+.burgerMenu {
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 288px;
+   min-height: 100vh;
+   background-color: var(--bg-color-primary);
+   border-left: 2px solid var(--border-color);
+   z-index: 100;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   align-items: center;
+}
+
+.burgerHeader {
+   font-size: 9px;
+   width: 100%;
+   height: 36px;
+   padding: 8px 12px;
+   background-color: var(--bg-color-secondary);
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.burgerLogoLink {
+   width: 48px;
+   height: 24px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 6px;
+}
+
+.burgerLogoLink img {
+   width: 9px;
+   height: 12px;
+}
+
+.burgerAvatar {
+   width: 24px;
+   height: 24px;
+   border-radius: 50%;
+}
+
+.burgerNav {
+   padding: 0 12px;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.burgerNav div {
+   width: 264px;
+   height: 44px;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 28px;
+   background-color: var(--bg-color-secondary);
+   padding: 8px;
+}
+
+.burgerLink {
+   color: var(--text-color-secondary) !important;
+}

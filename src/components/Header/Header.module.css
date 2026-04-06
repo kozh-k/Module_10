@@ -1,0 +1,123 @@
+.header {
+   margin: 0 auto;
+   box-sizing: border-box;
+   min-width: 100%;
+   height: 68px;
+   padding: 12px 24px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--bg-color-secondary);
+   color: var(--text-color-primary);
+   position: relative;
+}
+
+.header a {
+   color: var(--text-color-primary);
+   text-decoration: none;
+}
+
+.logoLink {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+}
+
+.logoLink img {
+   width: 17.78px;
+   height: 24px;
+}
+
+.desktopNavLinks {
+   display: flex;
+   gap: 24px;
+}
+
+.userInfo {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   font-weight: 400;
+}
+
+.userInfo img {
+   width: 24px;
+   height: 24px;
+   border-radius: 50%;
+}
+
+.burgerCheckbox,
+.burgerLabel,
+.mobileMenuWrapper {
+   display: none;
+}
+
+@media (max-width: 768px) {
+   .header {
+      height: 50px;
+      padding: 8px 16px;
+   }
+
+   .logoLink img {
+      width: 13px;
+      height: 18px;
+   }
+
+   .logoLink span {
+      font-size: 12px;
+   }
+
+   .desktopNav {
+      display: none;
+   }
+
+   .burgerLabel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+   }
+
+   .burgerLabel div {
+      width: 24px;
+      height: 2px;
+      background-color: var(--text-color-primary);
+   }
+
+   .mobileMenuWrapper {
+      display: none;
+   }
+
+   .burgerCheckbox:checked ~ .mobileMenuWrapper {
+      display: block;
+   }
+
+   .mobileMenuWrapper {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: 100;
+      min-height: 100vh;
+   }
+
+   /* blur bg */
+   .burgerOverlay {
+      display: none;
+      position: fixed;
+      top: 0px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      z-index: 99;
+   }
+
+   .burgerCheckbox:checked ~ .burgerOverlay {
+      display: block;
+   }
+}

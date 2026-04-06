@@ -1,0 +1,23 @@
+.suggestionSection {
+   position: absolute;
+   left: calc(50% + 350px + 85px);;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.suggestedPeople, .suggestedCommunities {
+   width: 341px;
+   padding: 24px;
+   background-color: var(--bg-color-secondary);
+   border: 2px solid var(--border-color);
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+@media (max-width: 1560px) {
+   .suggestionSection {
+      display: none;
+   }
+}
